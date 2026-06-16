@@ -16,7 +16,7 @@
 
         <div class="cta-banner-actions reveal">
             @if(!empty(config('site.cta_banner_button_label')))
-                <a href="#contact" class="btn btn-primary">
+                <a href="{{ config('site.appointment_url') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                     {{ config('site.cta_banner_button_label') }}<span aria-hidden="true"> →</span>
                 </a>
             @endif

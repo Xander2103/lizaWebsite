@@ -1,8 +1,17 @@
 <section id="about" class="client-section-alt" aria-labelledby="about-heading">
     <div class="client-container">
-        <div class="two-column-grid">
+        <div class="about-grid">
 
-            <div class="reveal">
+            <div class="about-text-header reveal">
+                <span class="section-eyebrow">About</span>
+                <span class="hero-centered-divider" aria-hidden="true"></span>
+                <h2 class="section-title about-heading" id="about-heading">
+                    {!! nl2br(e(config('site.about_title', config('site.name')))) !!}
+                </h2>
+                <p class="about-text">{{ config('site.about_body', config('site.intro_long')) }}</p>
+            </div>
+
+            <div class="about-image-wrap reveal">
                 @if(!empty(config('images.about')))
                     <div class="about-image-card">
                         <img src="{{ asset(config('images.about')) }}" alt="{{ config('images.about_alt') }}" class="about-image" loading="lazy">
@@ -20,16 +29,7 @@
                 @endif
             </div>
 
-            <div class="reveal">
-                <span class="section-eyebrow">About</span>
-                <span class="hero-centered-divider" aria-hidden="true"></span>
-
-                <h2 class="section-title about-heading" id="about-heading">
-                    {!! nl2br(e(config('site.about_title', config('site.name')))) !!}
-                </h2>
-
-                <p class="about-text">{{ config('site.about_body', config('site.intro_long')) }}</p>
-
+            <div class="about-content-wrap reveal">
                 @if(!empty(config('site.about_paragraph_2')))
                     <p class="about-text">{{ config('site.about_paragraph_2') }}</p>
                 @endif
@@ -55,7 +55,7 @@
                 @endif
 
                 @if(!empty(config('site.cta_primary')))
-                    <a href="#contact" class="btn btn-primary">{{ config('site.cta_primary') }}</a>
+                    <a href="{{ config('site.appointment_url') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">{{ config('site.cta_primary') }}</a>
                 @endif
             </div>
 

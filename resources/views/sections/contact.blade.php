@@ -159,8 +159,10 @@
                 </div>
 
                 <div class="contact-card-instagram">
-                    <p class="contact-card-instagram-label">Follow on Instagram</p>
-                    <p class="contact-card-instagram-handle">{{ config('contact.instagram_handle') }}</p>
+                    <div class="contact-card-instagram-text">
+                        <p class="contact-card-instagram-label">Follow on Instagram</p>
+                        <p class="contact-card-instagram-handle">{{ config('contact.instagram_handle') }}</p>
+                    </div>
                     <a href="{{ config('contact.instagram_url', '#') }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                         Follow
                     </a>

@@ -19,7 +19,7 @@
         </ul>
 
         @if(!empty(config('site.cta_primary')))
-            <a href="#contact" class="btn btn-primary nav-cta-btn">
+            <a href="{{ config('site.appointment_url') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta-btn">
                 {{ config('site.cta_primary') }}
             </a>
         @endif
@@ -47,12 +47,32 @@
     aria-label="Mobile menu"
     aria-hidden="true"
 >
-    @foreach(config('site.nav_items', []) as $item)
-        <a href="{{ $item['href'] }}" class="nav-mobile-link">{{ $item['label'] }}</a>
-    @endforeach
+    <div class="nav-mobile-brand">
+        <span class="nav-mobile-brand-name">{{ config('site.name') }}</span>
+        @if(!empty(config('site.nav_subtitle')))
+            <span class="nav-mobile-brand-subtitle">{{ config('site.nav_subtitle') }}</span>
+        @endif
+    </div>
 
-    @if(!empty(config('site.cta_primary')))
-        <a href="#contact" class="btn btn-primary">{{ config('site.cta_primary') }}</a>
+    <div class="nav-mobile-links">
+        @foreach(config('site.nav_items', []) as $item)
+            <a href="{{ $item['href'] }}" class="nav-mobile-link">{{ $item['label'] }}</a>
+        @endforeach
+
+        @if(!empty(config('site.cta_primary')))
+            <a href="{{ config('site.appointment_url') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-mobile-cta">{{ config('site.cta_primary') }}</a>
+        @endif
+    </div>
+
+    @if(!empty(config('contact.instagram_handle')))
+        <a href="{{ config('contact.instagram_url', '#') }}" target="_blank" rel="noopener noreferrer" class="nav-mobile-instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            {{ config('contact.instagram_handle') }}
+        </a>
     @endif
 </div>
 

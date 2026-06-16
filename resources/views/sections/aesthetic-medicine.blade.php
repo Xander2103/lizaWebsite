@@ -38,7 +38,7 @@
                         <h3>{{ config('service-details.aesthetic_medicine.cta_card.title') }}</h3>
                         <p>{{ config('service-details.aesthetic_medicine.cta_card.text') }}</p>
                         @if(!empty(config('service-details.aesthetic_medicine.cta_card.button')))
-                            <a href="#contact" class="btn btn-primary">{{ config('service-details.aesthetic_medicine.cta_card.button') }}</a>
+                            <a href="{{ config('site.appointment_url') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">{{ config('service-details.aesthetic_medicine.cta_card.button') }}</a>
                         @endif
                     </div>
                 @endif

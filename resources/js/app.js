@@ -19,25 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Mobile nav toggle
-document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.querySelector('.nav-toggle');
-    const panel  = document.querySelector('.nav-mobile-panel');
-
-    if (toggle && panel) {
-        toggle.addEventListener('click', () => {
-            panel.classList.toggle('is-open');
-            const isOpen = panel.classList.contains('is-open');
-            toggle.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        // Close on link click (single-page smooth scroll)
-        panel.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => panel.classList.remove('is-open'));
-        });
-    }
-});
-
 // Transparent header over hero, solid white once scrolled past
 document.addEventListener('DOMContentLoaded', () => {
     const nav  = document.querySelector('.nav-bar');

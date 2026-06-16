@@ -16,7 +16,8 @@ return [
 
     // Hero
     'hero_heading'    => 'Dr Sue-Liza Eta',
-    'hero_subheading' => 'Personalized medical care in Brussels, focused on vascular health, sustainable weight loss, and natural aesthetic results.',
+    'hero_subheading'        => 'Personalized medical care in Brussels, combining vascular surgery, medical weight loss and natural aesthetic medicine.',
+    'hero_subheading_mobile' => 'Personalized medical care in Brussels.',
     'hero_location'   => 'Brussels • Belgium',
     'nav_subtitle'    => 'MEDICAL DOCTOR · VASCULAR SURGEON',
 
@@ -42,7 +43,7 @@ return [
 
     // Navigation — order matches section flow: Home, Services, About, Approach, Contact
     'nav_items' => [
-        ['label' => 'About',      'href' => '/'],
+        ['label' => 'About',      'href' => '#about'],
         ['label' => 'Vascular Surgery',  'href' => '#vascular-surgery'],
         ['label' => 'Weight Loss',     'href' => '#weight-loss'],
         ['label' => 'Aesthetic Medicine',  'href' => '#aesthetic-medicine'],
@@ -126,8 +127,10 @@ return [
         ['label' => 'Vascular Surgery',     'href' => '#vascular-surgery'],
         ['label' => 'Medical Weight Loss',  'href' => '#weight-loss'],
         ['label' => 'Aesthetic Medicine',   'href' => '#aesthetic-medicine'],
-        ['label' => 'Book an Appointment',  'href' => $appointmentUrl],
+        ['label' => 'Book an Appointment',  'href' => $appointmentUrl, 'target' => '_blank'],
     ],
+    'developer_name' => 'VanMalderStudio',
+    'developer_url'  => 'https://vanmalderstudio.be/en',
     'whatsapp_url'   => null,
     'maps_link'      => null,
     'maps_embed_url' => null,

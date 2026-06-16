@@ -8,7 +8,7 @@
                     @endif
                     <h3>{{ $service['name'] }}</h3>
                     <p>{{ $service['description'] }}</p>
-                    <a href="#contact" class="service-panel-link">
+                    <a href="{{ $service['anchor'] ?? '#' }}" class="service-panel-link">
                         Learn more<span class="sr-only"> about {{ $service['name'] }}</span>
                     </a>
                 </article>

@@ -33,24 +33,14 @@
 
         <span class="hero-centered-divider" aria-hidden="true"></span>
 
-        <p>{{ config('site.hero_subheading', config('site.intro_short')) }}</p>
+        <p class="hero-sub-full">{{ config('site.hero_subheading', config('site.intro_short')) }}</p>
+        <p class="hero-sub-short">{{ config('site.hero_subheading_mobile', 'Personalized medical care in Brussels.') }}</p>
 
         <div class="cta-row">
             @if(!empty(config('site.cta_primary')))
-                <a href="#contact" class="btn btn-primary">{{ config('site.cta_primary') }}</a>
-            @endif
-            @if(!empty(config('site.cta_secondary')))
-                <a href="#approach" class="btn btn-secondary-light">{{ config('site.cta_secondary') }}</a>
+                <a href="{{ config('site.appointment_url') }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">{{ config('site.cta_primary') }}</a>
             @endif
         </div>
-
-        @if(!empty(config('site.trust_indicators')))
-            <ul class="hero-centered-trust" aria-label="Key trust points">
-                @foreach(config('site.trust_indicators') as $indicator)
-                    <li>{{ $indicator }}</li>
-                @endforeach
-            </ul>
-        @endif
 
     </div>
 
