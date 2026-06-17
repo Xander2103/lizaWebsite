@@ -38,6 +38,23 @@ class ContactFormTest extends TestCase
         $this->get('/privacy-policy')->assertSee('legal');
     }
 
+    // ── Security headers ───────────────────────────────────────
+
+    public function test_response_has_x_content_type_options_header(): void
+    {
+        $this->get('/')->assertHeader('X-Content-Type-Options', 'nosniff');
+    }
+
+    public function test_response_has_x_frame_options_header(): void
+    {
+        $this->get('/')->assertHeader('X-Frame-Options', 'SAMEORIGIN');
+    }
+
+    public function test_response_has_referrer_policy_header(): void
+    {
+        $this->get('/')->assertHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    }
+
     // ── Helpers ────────────────────────────────────────────────
 
     private function validPayload(array $overrides = []): array
