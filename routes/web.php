@@ -7,4 +7,7 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::get('/privacy-policy', fn() => view('pages.privacy-policy'))
+    ->name('privacy.policy');
+
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
