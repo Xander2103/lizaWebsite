@@ -16,7 +16,7 @@
 
         <div class="contact-grid">
 
-            <div class="reveal contact-form-card">
+            <div id="contact-form" class="reveal contact-form-card">
                 <h3 class="contact-form-card-title">{{ config('contact.form_heading', 'Send a Message') }}</h3>
 
                 @if(session('contact_success'))

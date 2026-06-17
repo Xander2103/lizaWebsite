@@ -12,7 +12,7 @@ use Throwable;
 
 class ContactController extends Controller
 {
-    private const REDIRECT = '/#contact';
+    private const REDIRECT = '/#contact-form';
 
     public function store(Request $request): RedirectResponse
     {
