@@ -9,9 +9,7 @@
                 <span class="section-eyebrow">Legal</span>
                 <h1 class="section-title">Privacy Policy</h1>
 
-                <div class="form-alert form-alert-error" style="margin-bottom:2rem;">
-                    <strong>Note for the client:</strong> This privacy policy is practical website copy. It has not been reviewed by a legal professional. Please have it verified by a qualified legal advisor before putting this site into production use.
-                </div>
+                {{-- Developer note: this privacy policy is practical website copy, not a lawyer-reviewed document. Have it verified before going live. --}}
 
                 <p style="color:var(--color-text-light); font-size:0.875rem; margin-bottom:2rem;">Last updated: {{ date('F Y') }}</p>
 

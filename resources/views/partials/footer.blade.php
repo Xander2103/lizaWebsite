@@ -20,6 +20,7 @@
                         {{ config('contact.instagram_handle') }}
                     </a>
                 @endif
+                <a href="{{ route('privacy.policy') }}" class="footer-privacy-link">Privacy Policy</a>
             </div>
 
             <div>
