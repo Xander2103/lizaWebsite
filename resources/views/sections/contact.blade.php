@@ -142,16 +142,17 @@
                     @endif
 
                     @if(!empty(config('contact.maps_embed_url')))
-                        <div class="contact-map-embed">
-                            <iframe
-                                src="{{ config('contact.maps_embed_url') }}"
-                                width="100%" height="100%"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                title="Map — {{ config('contact.location_name') }}"
-                            ></iframe>
+                        <div class="contact-map-placeholder"
+                             id="contact-map"
+                             data-map-src="{{ config('contact.maps_embed_url') }}"
+                             data-map-title="Map — {{ config('contact.location_name') }}">
+                            <div class="contact-map-placeholder-inner">
+                                <p>Map not loaded.</p>
+                                <p class="contact-map-note">By loading the map, Google may process your data per their privacy policy.</p>
+                                <button type="button" class="btn btn-secondary" data-map-load style="padding-top:0.5rem; padding-bottom:0.5rem; font-size:0.8125rem;">
+                                    Load map
+                                </button>
+                            </div>
                         </div>
                     @endif
 
@@ -177,3 +178,28 @@
         </div>
     </div>
 </section>
+
+@push('scripts')
+<script>
+(function () {
+    var wrap = document.getElementById('contact-map');
+    if (!wrap) return;
+    var btn = wrap.querySelector('[data-map-load]');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = wrap.dataset.mapSrc;
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.style.border = '0';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('loading', 'lazy');
+        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+        iframe.title = wrap.dataset.mapTitle;
+        wrap.classList.remove('contact-map-placeholder');
+        wrap.innerHTML = '';
+        wrap.appendChild(iframe);
+    });
+}());
+</script>
+@endpush
