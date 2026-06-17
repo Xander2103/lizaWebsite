@@ -95,13 +95,17 @@
                         @enderror
                     </div>
 
+                    {{-- Honeypot: hidden from real users, bots fill it --}}
+                    <div aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;tab-index:-1;">
+                        <label for="contact-website">Leave this blank</label>
+                        <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
                     <div class="form-checkbox">
-                        <input type="checkbox" id="contact-privacy" name="privacy" required>
+                        <input type="checkbox" id="contact-privacy" name="privacy" value="1" required>
                         <label for="contact-privacy">
                             I agree that my information may be used to respond to my enquiry.
-                            @if(!empty(config('contact.privacy_link')))
-                                <a href="{{ config('contact.privacy_link') }}" target="_blank" rel="noopener noreferrer">Privacy policy</a>.
-                            @endif
+                            I have read the <a href="{{ route('privacy.policy') }}" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                         </label>
                         @error('privacy')
                             <span class="form-error">{{ $message }}</span>
