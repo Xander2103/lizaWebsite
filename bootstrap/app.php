@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,5 +17,12 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->renderable(function (ThrottleRequestsException $e, $request) {
+            if ($request->routeIs('contact.submit')) {
+                return redirect()->back()->with(
+                    'contact_error',
+                    'You have reached the maximum number of messages for today. Please try again tomorrow, or book directly via Doctoranytime — available 24/7.'
+                );
+            }
+        });
     })->create();

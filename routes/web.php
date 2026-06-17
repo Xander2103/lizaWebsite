@@ -10,4 +10,6 @@ Route::get('/', function () {
 Route::get('/privacy-policy', fn() => view('pages.privacy-policy'))
     ->name('privacy.policy');
 
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
+Route::post('/contact', [ContactController::class, 'store'])
+    ->name('contact.submit')
+    ->middleware('throttle:contact');

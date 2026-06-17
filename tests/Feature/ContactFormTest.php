@@ -130,6 +130,24 @@ class ContactFormTest extends TestCase
         Mail::assertSent(ContactFormSubmitted::class);
     }
 
+    // ── Rate limiting ──────────────────────────────────────────
+
+    public function test_rate_limit_blocks_after_two_submissions(): void
+    {
+        Mail::fake();
+
+        $payload = $this->validPayload();
+
+        // First two submissions succeed
+        $this->post('/contact', $payload)->assertSessionHas('contact_success');
+        $this->post('/contact', $payload)->assertSessionHas('contact_success');
+
+        // Third is rate-limited — must redirect back with contact_error
+        $this->post('/contact', $payload)
+            ->assertRedirect()
+            ->assertSessionHas('contact_error');
+    }
+
     // ── Helpers ────────────────────────────────────────────────
 
     private function validPayload(array $overrides = []): array
