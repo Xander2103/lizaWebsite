@@ -300,8 +300,13 @@
       margin-bottom: 0.75rem;
     }
 
-    /* Service line hidden on mobile — keeps overlay clean and uncluttered */
-    .hero-centered-services { display: none; }
+    /* Service line: compact inline row — smaller than desktop, not stacked */
+    .hero-centered-services {
+      display: flex;
+      font-size: 0.75rem;
+      letter-spacing: 0.025em;
+      margin-bottom: 0.75rem;
+    }
 
     .hero-centered-divider {
       margin-bottom: 1rem;
