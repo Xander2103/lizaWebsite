@@ -1100,18 +1100,21 @@
   }
 
   /* Desktop 3-column row — aligns with footer-grid columns */
-  @media (min-width: 768px) {
-    .footer-bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      align-items: baseline;
-      gap: 2.5rem;
-      text-align: left;
-    }
-
-    .footer-bottom-credit   { text-align: center; }
-    .footer-bottom-location { text-align: right; }
+@media (min-width: 768px) {
+  .footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: baseline;
+    gap: 2.5rem;
+    text-align: left;
   }
+
+  .footer-bottom-copy,
+  .footer-bottom-credit,
+  .footer-bottom-location {
+    text-align: left;
+  }
+}
 
   @media (min-width: 1024px) {
     .footer-bottom { gap: 4rem; } /* = lg:gap-16, matches .footer-grid on lg */
