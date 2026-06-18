@@ -134,6 +134,7 @@
                         {{ config('contact.address_line1') }}<br>
                         {{ config('contact.address_line2') }}
                     </p>
+                    <a href="mailto:suelacie87@gmail.com">suelacie87@gmail.com</a>
                     @if(!empty(config('contact.phone')))
                         <p><a href="tel:{{ config('contact.phone') }}">{{ config('contact.phone') }}</a></p>
                     @endif

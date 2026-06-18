@@ -14,11 +14,12 @@ class ContactFormSubmitted extends Mailable
     {
     }
 
-    public function build(): self
-    {
-        return $this
-            ->subject('New consultation enquiry — ' . config('site.name'))
-            ->replyTo($this->submission['email'], $this->submission['name'])
-            ->view('emails.contact-form');
-    }
+public function build(): self
+{
+    return $this
+        ->subject('New consultation enquiry — ' . config('site.name'))
+        ->from(config('mail.from.address'), ($this->submission['name'] ?? 'Website visitor') . ' via Dr Sue-Liza Eta website')
+        ->replyTo($this->submission['email'], $this->submission['name'])
+        ->view('emails.contact-form');
+}
 }

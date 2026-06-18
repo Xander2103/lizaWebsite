@@ -1,6 +1,6 @@
 <?php
 
-$appointmentUrl = 'https://www.doctoranytime.be/en/Account/Login?loginType=1&returnUrl=%2Fen%2FdoctorcrmV2%2FProfile%2FRedesign%3FdoctorAdminId%3D0%26doctorid%3D109025&action=login&controller=account';
+$appointmentUrl = 'https://www.doctoranytime.be/en/d/vascular-surgeon/sue-liza-eta';
 
 return [
     // Appointment booking — single source for every booking CTA on the site

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactFormConfirmation;
 use App\Mail\ContactFormSubmitted;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -43,6 +44,8 @@ class ContactController extends Controller
 
         try {
             Mail::to(config('contact.email'))->send(new ContactFormSubmitted($validated));
+
+            Mail::to($validated['email'])->send(new ContactFormConfirmation($validated));
         } catch (Throwable $e) {
             report($e);
 
