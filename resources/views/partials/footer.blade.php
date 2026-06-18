@@ -62,7 +62,7 @@
         </div>
 
         <div class="footer-bottom">
-            <span class="footer-bottom-copy">{{ config('site.footer_text') }}</span>
+            <span class="footer-bottom-copy">{{ config('site.footer_text') }}<p>VAT : BE0793838003</p></span>
             @if(!empty(config('site.developer_name')))
                 <span class="footer-bottom-credit">Made by <a href="{{ config('site.developer_url') }}" target="_blank" rel="noopener noreferrer">{{ config('site.developer_name') }}</a></span>
             @endif
