@@ -36,6 +36,17 @@
             </div>
 
             <div>
+                <p class="footer-label">Treatments &amp; Locations</p>
+                <ul class="footer-nav-list" role="list">
+                    <li><a href="/botox-woluwe-saint-pierre">Botox in Woluwe-Saint-Pierre</a></li>
+                    <li><a href="/aesthetic-medicine-woluwe-saint-pierre">Aesthetic Medicine in Woluwe-Saint-Pierre</a></li>
+                    <li><a href="/medical-weight-loss-woluwe-saint-pierre">Medical Weight Loss in Woluwe-Saint-Pierre</a></li>
+                    <li><a href="/vascular-surgeon-woluwe-saint-pierre">Vascular Surgeon in Woluwe-Saint-Pierre</a></li>
+                    <li><a href="/sclerotherapy-woluwe-saint-pierre">Sclerotherapy in Woluwe-Saint-Pierre</a></li>
+                </ul>
+            </div>
+
+            <div>
                 <p class="footer-label">Contact &amp; Location</p>
                 <ul class="footer-contact-list" role="list">
                     @if(!empty(config('contact.location_name')))

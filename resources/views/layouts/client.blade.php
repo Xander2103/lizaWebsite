@@ -12,21 +12,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ config('seo.title') }}</title>
-    <meta name="description" content="{{ config('seo.description') }}">
+    <title>{{ $seo['title'] ?? config('seo.title') }}</title>
+    <meta name="description" content="{{ $seo['description'] ?? config('seo.description') }}">
 
-    @if(config('seo.noindex'))
+    @if($seo['noindex'] ?? config('seo.noindex'))
         <meta name="robots" content="noindex">
     @endif
 
-    @if(!empty(config('seo.canonical_url')))
-        <link rel="canonical" href="{{ config('seo.canonical_url') }}">
+    @php $canonical = $seo['canonical_url'] ?? config('seo.canonical_url'); @endphp
+    @if(!empty($canonical))
+        <link rel="canonical" href="{{ $canonical }}">
     @endif
 
-    <meta property="og:title"       content="{{ config('seo.og_title') }}">
-    <meta property="og:description" content="{{ config('seo.og_description') }}">
-    <meta property="og:image"       content="{{ config('seo.og_image') }}">
-    <meta property="og:type"        content="{{ config('seo.og_type', 'website') }}">
+    <meta property="og:title"       content="{{ $seo['og_title'] ?? config('seo.og_title') }}">
+    <meta property="og:description" content="{{ $seo['og_description'] ?? config('seo.og_description') }}">
+    <meta property="og:image"       content="{{ $seo['og_image'] ?? config('seo.og_image') }}">
+    <meta property="og:type"        content="{{ $seo['og_type'] ?? config('seo.og_type', 'website') }}">
 
     @if(config('images.favicon'))
         <link rel="icon" href="{{ asset(config('images.favicon')) }}">
