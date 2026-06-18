@@ -1121,7 +1121,7 @@
   }
 
   .footer-bottom-credit a {
-    color: var(--color-accent-light);   /* muted copper/gold — matches footer labels */
+    color: var(--color-accent-light);
     text-decoration: none;
     text-underline-offset: 2px;
     text-decoration-thickness: 1px;
@@ -1131,6 +1131,19 @@
       color: var(--color-accent);
       text-decoration: underline;
     }
+  }
+
+  .footer-bottom-copy a {
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover { color: rgba(255, 255, 255, 0.75); }
+  }
+
+  .footer-legal-sep {
+    margin-inline: 0.35em;
+    opacity: 0.35;
   }
 
   /* --- Forms --- */

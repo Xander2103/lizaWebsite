@@ -7,6 +7,7 @@ use App\Mail\ContactFormSubmitted;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Throwable;
@@ -22,6 +23,15 @@ class ContactController extends Controller
             return redirect(self::REDIRECT)->with(
                 'contact_success',
                 config('contact.form_success_message', 'Thank you — your message has been received.')
+            );
+        }
+
+        // Rate limit: 2 submissions per IP per day
+        $rateLimitKey = 'contact:' . $request->ip();
+        if (RateLimiter::tooManyAttempts($rateLimitKey, 2)) {
+            return redirect(self::REDIRECT)->with(
+                'contact_error',
+                'You have reached the maximum number of messages for today. Please try again tomorrow, or book directly via Doctoranytime — available 24/7.'
             );
         }
 
@@ -53,6 +63,8 @@ class ContactController extends Controller
                 ->withInput()
                 ->with('contact_error', 'Something went wrong sending your message. Please try again or contact us directly by phone.');
         }
+
+        RateLimiter::hit($rateLimitKey, 86400);
 
         return redirect(self::REDIRECT)->with(
             'contact_success',

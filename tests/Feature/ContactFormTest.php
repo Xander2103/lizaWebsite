@@ -138,14 +138,15 @@ class ContactFormTest extends TestCase
 
         $payload = $this->validPayload();
 
-        // First two submissions succeed
+        // First two submissions succeed and consume the daily limit
         $this->post('/contact', $payload)->assertSessionHas('contact_success');
         $this->post('/contact', $payload)->assertSessionHas('contact_success');
 
-        // Third is rate-limited — must redirect back with contact_error
-        $this->post('/contact', $payload)
-            ->assertRedirect()
-            ->assertSessionHas('contact_error');
+        // Third must be blocked — controller checks 'contact:{ip}' key
+        $response = $this->post('/contact', $payload);
+        $response->assertRedirect()->assertSessionHas('contact_error');
+
+        Mail::assertSentCount(4); // 2 admin + 2 confirmation, none for the blocked request
     }
 
     // ── Helpers ────────────────────────────────────────────────

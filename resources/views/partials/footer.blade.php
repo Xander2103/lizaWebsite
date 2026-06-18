@@ -62,7 +62,12 @@
         </div>
 
         <div class="footer-bottom">
-            <span class="footer-bottom-copy">{{ config('site.footer_text') }}<p>VAT : BE0793838003</p></span>
+            <span class="footer-bottom-copy">
+                © {{ date('Y') }} Dr Sue-Liza Eta
+                <span class="footer-legal-sep">·</span> VAT: BE0793838003
+                <span class="footer-legal-sep">·</span> <a href="{{ route('privacy.policy') }}">Privacy Policy</a>
+                <span class="footer-legal-sep">·</span> <a href="{{ route('legal.notice') }}">Legal Notice</a>
+            </span>
             @if(!empty(config('site.developer_name')))
                 <span class="footer-bottom-credit">Made by <a href="{{ config('site.developer_url') }}" target="_blank" rel="noopener noreferrer">{{ config('site.developer_name') }}</a></span>
             @endif
